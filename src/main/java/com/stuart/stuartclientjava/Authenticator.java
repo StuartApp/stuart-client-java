@@ -30,8 +30,4 @@ public class Authenticator {
     public OAuth2AccessToken getNewAccessToken() {
         return new ClientCredentialsAccessTokenProvider().obtainAccessToken(clientCredentialsResourceDetails, new DefaultAccessTokenRequest());
     }
-
-    public void setOAuth2AccessToken(OAuth2AccessToken oAuth2AccessToken) {
-        this.oAuth2AccessToken = oAuth2AccessToken;
-    }
 }
