@@ -1,4 +1,4 @@
-package com.stuart.stuartclientjava;
+package com.stuart.stuartclientjava.infrastructure;
 
 import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider;
@@ -8,14 +8,16 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 public class Authenticator {
 
     private final ClientCredentialsResourceDetails clientCredentialsResourceDetails;
+    private final Environment environment;
     private OAuth2AccessToken oAuth2AccessToken;
 
     public Authenticator(Environment environment, String apiClientId, String apiClientSecret) {
         ClientCredentialsResourceDetails clientCredentialsResourceDetails = new ClientCredentialsResourceDetails();
-        clientCredentialsResourceDetails.setAccessTokenUri(environment.baseUrl());
+        clientCredentialsResourceDetails.setAccessTokenUri(String.format("%s/oauth/token", environment.baseUrl()));
         clientCredentialsResourceDetails.setClientId(apiClientId);
         clientCredentialsResourceDetails.setClientSecret(apiClientSecret);
         this.clientCredentialsResourceDetails = clientCredentialsResourceDetails;
+        this.environment = environment;
     }
 
     public String getAccessToken() {
@@ -29,5 +31,9 @@ public class Authenticator {
 
     public OAuth2AccessToken getNewAccessToken() {
         return new ClientCredentialsAccessTokenProvider().obtainAccessToken(clientCredentialsResourceDetails, new DefaultAccessTokenRequest());
+    }
+
+    public Environment getEnvironment() {
+        return environment;
     }
 }

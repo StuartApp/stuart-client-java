@@ -1,5 +1,7 @@
-package com.stuart.stuartclientjava;
+package com.stuart.stuartclientjava.infrastructure;
 
+import com.stuart.stuartclientjava.infrastructure.Authenticator;
+import com.stuart.stuartclientjava.infrastructure.Environment;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
@@ -56,7 +58,7 @@ public class AuthenticatorTest {
         assertThat(accessToken).isEqualTo("new-access-token");
     }
 
-    private OAuth2AccessToken validAccessToken(final String token) {
+    public static OAuth2AccessToken validAccessToken(final String token) {
         return new OAuth2AccessToken() {
             @Override
             public Map<String, Object> getAdditionalInformation() {

@@ -1,9 +1,9 @@
-package com.stuart.stuartclientjava;
+package com.stuart.stuartclientjava.infrastructure;
 
 public enum Environment {
 
-    SANDBOX("https://sandbox-api.stuart.com/oauth/token"),
-    PRODUCTION("https://api.stuart.com/oauth/token");
+    SANDBOX("https://sandbox-api.stuart.com"),
+    PRODUCTION("https://api.stuart.com");
 
     private final String baseUrl;
 
