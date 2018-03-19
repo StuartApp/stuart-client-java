@@ -1,8 +1,5 @@
 package com.stuart.stuartclientjava.infrastructure;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
@@ -31,41 +28,13 @@ public class HttpClientTest {
         this.httpClient = new HttpClientMock(authenticator, okHttpClient);
     }
 
-    public void creatJob() throws IOException {
-        Authenticator authenticator = new Authenticator(Environment.SANDBOX, "c6058849d0a056fc743203acb8e6a850dad103485c3edc51b16a9260cc7a7688", "aa6a415fce31967501662c1960fcbfbf4745acff99acb19dbc1aae6f76c9c619");
-
-        HttpClient client = new HttpClient(authenticator);
-
-        JsonObject root = new JsonObject();
-        JsonObject job = new JsonObject();
-        root.add("job", job);
-
-        job.addProperty("transport_type", "bike");
-        JsonObject pickup = new JsonObject();
-        pickup.addProperty("address", "12 rue rivoli, 75001 Paris");
-        JsonArray pickups = new JsonArray();
-        pickups.add(pickup);
-
-        job.add("pickups", pickups);
-
-
-        JsonObject dropoff = new JsonObject();
-        dropoff.addProperty("address", "42 rue rivoli, 75001 Paris");
-        JsonArray dropoffs = new JsonArray();
-        dropoffs.add(dropoff);
-
-        job.add("dropoffs", dropoffs);
-
-        String jobAsJson = new Gson().toJson(root);
-        ApiResponse apiResponse = client.performPost("/v2/jobs", jobAsJson);
-        apiResponse.getBody();
-    }
-
     @Test
     void shouldSendGetRequestWithCorrectParameters() throws IOException {
+        // when
         this.httpClient.performGet("/sample-endpoint");
-
         Request request = this.okHttpClient.getRequest();
+
+        // then
         assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
         assertThat(request.method()).isEqualTo("GET");
         assertThat(request.headers()).isEqualTo(
@@ -80,9 +49,11 @@ public class HttpClientTest {
 
     @Test
     void shouldSendPostRequestWithCorrectParameters() throws IOException {
+        // when
         this.httpClient.performPost("/sample-endpoint", "{'some': 'body'}");
-
         Request request = this.okHttpClient.getRequest();
+
+        // then
         assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
         assertThat(request.method()).isEqualTo("POST");
         assertThat(request.headers()).isEqualTo(
