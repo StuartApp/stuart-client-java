@@ -6,7 +6,7 @@ If you're using **Maven**, add the following dependency to your `pom.xml` file:
 
 ``` xml
 <dependency>
-  <groupId>com.stuartapp</groupId>
+  <groupId>com.github.stuartapp</groupId>
   <artifactId>stuart-client-java</artifactId>
   <version>1.0.0</version>
 </dependency>
