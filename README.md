@@ -28,3 +28,59 @@ HttpClient httpClient = new HttpClient(authenticator);
 ```
 
 ### Custom request
+
+```java
+public void createAJobExample() {
+
+  JsonObject job = new JsonObject();
+  job.addProperty("transport_type", "bike");
+
+  JsonArray pickups = new JsonArray();
+  JsonObject pickup = buildLocation(
+          "46 Boulevard Barbès, 75018 Paris",
+          "Wait outside for an employee to come.",
+          "Martin",
+          "Pont",
+          "+33698348756",
+          "KFC Paris Barbès"
+  );
+  pickups.add(pickup);
+
+  JsonArray dropoffs = new JsonArray();
+  JsonObject dropoff = buildLocation(
+          "156 rue de Charonne, 75011 Paris",
+          "code: 3492B. 3e étage droite. Sonner à Durand.",
+          "Alex",
+          "Durand",
+          "+33634981209",
+          "Durand associates."
+  );
+  dropoff.addProperty("client_reference", "reference-id-01");
+  dropoffs.add(dropoff);
+
+  JsonObject root = new JsonObject();
+  job.add("pickups", pickups);
+  job.add("dropoffs", dropoffs);
+  root.add("job", job);
+
+  ApiResponse apiResponse = httpClient.performPost("/v2/jobs", root.toString());
+}
+
+public JsonObject buildLocation(String address, String comment, String firstname, String lastname, String phone, String company) {
+  JsonObject location = new JsonObject();
+
+  location.addProperty("address", address);
+  location.addProperty("comment", comment);
+
+  JsonObject contact = new JsonObject();
+  location.add("contact", contact);
+
+  contact.addProperty("firstname", firstname);
+  contact.addProperty("lastname", lastname);
+  contact.addProperty("phone", phone);
+  contact.addProperty("company", company);
+
+  return location;
+}
+
+```
