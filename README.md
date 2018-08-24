@@ -1,5 +1,7 @@
 [ ![Codeship Status for StuartApp/stuart-client-java](https://app.codeship.com/projects/d4832110-0f57-0136-454f-1e7ea711f6fc/status?branch=master)](https://app.codeship.com/projects/282509)
 
+![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.stuartapp/stuart-client-java.svg)
+
 # Stuart Java Client
 For a complete documentation of all endpoints offered by the Stuart API, you can visit [Stuart API documentation](https://stuart.api-docs.io).
 
