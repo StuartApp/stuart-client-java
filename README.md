@@ -1,4 +1,4 @@
-[ ![Codeship Status for StuartApp/stuart-client-java](https://app.codeship.com/projects/d4832110-0f57-0136-454f-1e7ea711f6fc/status?branch=master)](https://app.codeship.com/projects/282509)
+[![Codeship Status for StuartApp/stuart-client-java](https://app.codeship.com/projects/2464dd40-b15b-0137-b854-3e6824a8821c/status?branch=master)](https://app.codeship.com/projects/363060)
 
 ![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.stuartapp/stuart-client-java.svg)
 
