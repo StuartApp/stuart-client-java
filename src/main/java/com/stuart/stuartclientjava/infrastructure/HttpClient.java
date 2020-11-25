@@ -37,6 +37,17 @@ public class HttpClient {
         return new ApiResponse(response.code(), response.body().string());
     }
 
+    public ApiResponse performPatch(String resource, String body) throws IOException {
+        Request request = new Request.Builder()
+                .url(getFullUrl(resource))
+                .headers(Headers.of(getDefaultHeaders()))
+                .patch(RequestBody.create(MediaType.parse("application/json; charset=utf-8"), body))
+                .build();
+
+        Response response = client.newCall(request).execute();
+        return new ApiResponse(response.code(), response.body().string());
+    }
+
     private Map<String, String> getDefaultHeaders() {
         Map<String, String> result = new HashMap<String, String>();
         result.put("Authorization", String.format("Bearer %s", authenticator.getAccessToken()));

@@ -69,6 +69,28 @@ public class HttpClientTest {
         assertThat(sink.readUtf8()).isEqualTo("{'some': 'body'}");
     }
 
+    @Test
+    void shouldSendPatchRequestWithCorrectParameters() throws IOException {
+        // when
+        this.httpClient.performPatch("/sample-endpoint", "{'some': 'body'}");
+        Request request = this.okHttpClient.getRequest();
+
+        // then
+        assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
+        assertThat(request.method()).isEqualTo("PATCH");
+        assertThat(request.headers()).isEqualTo(
+                Headers.of(
+                        "Authorization", "Bearer token",
+                        "User-Agent", String.format("stuart-client-java/%s", new Version().getCurrent()),
+                        "Content-Type", "application/json"
+                )
+        );
+
+        Buffer sink = new Buffer();
+        request.body().writeTo(sink);
+        assertThat(sink.readUtf8()).isEqualTo("{'some': 'body'}");
+    }
+
     private class HttpClientMock extends HttpClient {
 
         public HttpClientMock(Authenticator authenticator, OkHttpClient client) {
