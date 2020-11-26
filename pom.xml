@@ -4,7 +4,7 @@
 
     <groupId>com.github.stuartapp</groupId>
     <artifactId>stuart-client-java</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <name>Stuart API Java client</name>
     <description>Java library to interact with the Stuart API.</description>
@@ -23,11 +23,17 @@
             <email>maximilien.tyc@gmail.com</email>
             <url>https://github.com/maximilientyc/</url>
         </developer>
+        <developer>
+            <id>sergicastellsague</id>
+            <name>Sergi Castellsague</name>
+            <email>s.castellsague@stuart.com</email>
+            <url>https://github.com/sergicastellsague/</url>
+        </developer>
     </developers>
 
     <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -35,7 +41,7 @@
         <connection>scm:git:git@github.com:StuartApp/stuart-client-java.git</connection>
         <url>scm:git:git@github.com:StuartApp/stuart-client-java.git</url>
         <developerConnection>scm:git:git@github.com:StuartApp/stuart-client-java.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>stuart-client-java-1.0.2</tag>
     </scm>
 
     <distributionManagement>
@@ -88,6 +94,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -100,6 +109,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -107,6 +117,12 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
+                        <configuration>
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
