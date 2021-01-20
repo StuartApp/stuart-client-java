@@ -35,7 +35,7 @@ public class HttpClientTest {
         Request request = this.okHttpClient.getRequest();
 
         // then
-        assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
+        assertThat(request.url().toString()).isEqualTo("https://api.sandbox.stuart.com/sample-endpoint");
         assertThat(request.method()).isEqualTo("GET");
         assertThat(request.headers()).isEqualTo(
                 Headers.of(
@@ -54,7 +54,7 @@ public class HttpClientTest {
         Request request = this.okHttpClient.getRequest();
 
         // then
-        assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
+        assertThat(request.url().toString()).isEqualTo("https://api.sandbox.stuart.com/sample-endpoint");
         assertThat(request.method()).isEqualTo("POST");
         assertThat(request.headers()).isEqualTo(
                 Headers.of(
@@ -76,7 +76,7 @@ public class HttpClientTest {
         Request request = this.okHttpClient.getRequest();
 
         // then
-        assertThat(request.url().toString()).isEqualTo("https://sandbox-api.stuart.com/sample-endpoint");
+        assertThat(request.url().toString()).isEqualTo("https://api.sandbox.stuart.com/sample-endpoint");
         assertThat(request.method()).isEqualTo("PATCH");
         assertThat(request.headers()).isEqualTo(
                 Headers.of(

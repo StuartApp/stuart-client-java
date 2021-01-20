@@ -2,3 +2,6 @@
 .idea/
 stuart-client-java.iml
 target/
+.classpath
+.project
+.settings
