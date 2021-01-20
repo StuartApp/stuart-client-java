@@ -4,7 +4,7 @@
 
     <groupId>com.github.stuartapp</groupId>
     <artifactId>stuart-client-java</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <name>Stuart API Java client</name>
     <description>Java library to interact with the Stuart API.</description>
@@ -41,7 +41,7 @@
         <connection>scm:git:git@github.com:StuartApp/stuart-client-java.git</connection>
         <url>scm:git:git@github.com:StuartApp/stuart-client-java.git</url>
         <developerConnection>scm:git:git@github.com:StuartApp/stuart-client-java.git</developerConnection>
-        <tag>stuart-client-java-1.0.2</tag>
+        <tag>stuart-client-java-1.0.3</tag>
     </scm>
 
     <distributionManagement>
