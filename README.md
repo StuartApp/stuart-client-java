@@ -3,7 +3,7 @@
 ![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.stuartapp/stuart-client-java.svg)
 
 # Stuart Java Client
-For a complete documentation of all endpoints offered by the Stuart API, you can visit [Stuart API documentation](https://stuart.api-docs.io).
+For a complete documentation of all endpoints offered by the Stuart API, you can visit [Stuart API documentation](https://api-docs.stuart.com).
 
 ## Install
 If you're using **Maven**, add the following dependency to your `pom.xml` file:
